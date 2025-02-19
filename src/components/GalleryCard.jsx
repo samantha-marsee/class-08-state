@@ -1,6 +1,6 @@
 import Citation from "./Citation";
 
-export default function GalleryCard({ imgUri, altText, citation = undefined, caption = undefined, color = '#e2e8f0' }) {
+export default function GalleryCard({ imgUri, altText, citation = undefined, caption = undefined, color = '#e2e8f0'}) {
   const isModalOpen = false;
 
   return (
@@ -14,8 +14,9 @@ export default function GalleryCard({ imgUri, altText, citation = undefined, cap
         </div>
       </dialog>
 
-      <div
+      <button
         className="card"
+        onClick ={() => alert("Card Clicked!")}
         style={{ backgroundColor: color }}
       >
         <img src={imgUri} alt={altText} />
@@ -28,7 +29,7 @@ export default function GalleryCard({ imgUri, altText, citation = undefined, cap
           {!!citation &&
             <Citation citation={citation} align="center" />}
         </div>
-      </div>
+      </button>
 
     </div>
   )
