@@ -1,14 +1,18 @@
 import Citation from "./Citation";
+import {useState} from 'react';
 
 export default function GalleryCard({ imgUri, altText, citation = undefined, caption = undefined, color = '#e2e8f0'}) {
-  const isModalOpen = false;
+  const[isModalOpen, setModalOpen] = useState(false)
 
   return (
     <div className="modal-container">
 
       <dialog className="modal" open={isModalOpen}>
         <div className="modal-content">
-          <button aria-label="close" className="close">&times;</button>
+
+          <button aria-label="close" className="close" onClick={() => { setModalOpen(false) }}>
+            Close
+          </button>
 
           <img src={imgUri} alt={altText} />
         </div>
@@ -16,7 +20,7 @@ export default function GalleryCard({ imgUri, altText, citation = undefined, cap
 
       <button
         className="card"
-        onClick ={() => alert("Card Clicked!")}
+        onClick ={() => setModalOpen(true)}
         style={{ backgroundColor: color }}
       >
         <img src={imgUri} alt={altText} />
